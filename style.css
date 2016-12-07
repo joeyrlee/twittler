@@ -99,15 +99,21 @@ button {
   background-image: linear-gradient(#b3b3b3, #f2f2f2);
 }
 
+
+.article {
+  border: ;
+}
+
 /*
   Tweet Stylization
  */
 .tweet {
   display: block;
-  border: 1px solid gray;
+  border: 1px solid #bfbfbf;
+  background: white;
   padding: 5px;
   width: 33%;
-  height: 25px;
+  height: 35px;
   margin-left: 33%;
   font: 12px/1.15px arial;
   text-align: left;

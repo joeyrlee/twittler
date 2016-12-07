@@ -31,8 +31,8 @@
           while(index >= 0){
             var tweet = streams.home[index];
             //append the tweets to the `main` element as article 
-    		//elements to provide greater semantic value than div tags
-            var $tweet = $('<article></article>');
+    		//elements to provide greater semantic value than divs
+            var $tweet = $('<article class="tweet"></article>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
             $tweet.appendTo($section);
             index -= 1;
