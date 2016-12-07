@@ -2,50 +2,57 @@
   Navigation
  */
 body {
-  display: block;
   background-color: #e6f2ff;
-}
-
-img {
-  width: 40px;
-  height: 32px;
 }
 
 nav {
   display: block;
   margin-left: 5%;
-  padding: 0 30%;
-  width: 30%;
+  padding: 10px;
+  width: 90%;
+  height: 50px;
   border: 1px solid #949599;
   background-color: white;
   border-radius: 5px;
 }
 
-.search {
+.header {
+  margin: 0 50px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.link {
+  border-bottom: 1px solid black;
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  border-bottom: 3px solid #002db3;
+  font-weight: bold;
+}
+
+.link:first-child {
+  margin-left: 25%;
+}
+
+img {
+  width: 40px;
+  height: 32px;
+  margin-top: 10px;
+}
+
+.search-box {
+  margin: 5px 0 0 100px;
   background-color: #e6f2ff;
   border-radius: 25px;
   text-align: center;
   color: black;
 }
 
-.header {
-  vertical-align: middle;
-}
-
-nav a {
-  display: inline-block;
-  margin: 5px 12px;
-  text-decoration: none;
-  color: black;
-}
-
-.link {
-  border-bottom: 1px solid black;
-}
-
-.link:hover {
-  border-bottom: 3px solid #002db3;
-  font-weight: bold;
+.search-button {
+  margin: 5px 0 0 0;
 }
 
 /*
@@ -82,7 +89,7 @@ button {
 }
 
 /*
-  Custom Effects (imitation of browsers') for new tweets button
+  Custom Effects (imitation of browsers') for Generate New Tweets button
  */
 .button-border {
   border: 1px solid black;
