@@ -1,0 +1,120 @@
+/*
+  Navigation
+ */
+body {
+  display: block;
+  background-color: #e6f2ff;
+}
+
+img {
+  width: 40px;
+  height: 32px;
+}
+
+nav {
+  display: block;
+  margin-left: 5%;
+  padding: 0 30%;
+  width: 30%;
+  border: 1px solid #949599;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.search {
+  background-color: #e6f2ff;
+  border-radius: 25px;
+  text-align: center;
+  color: black;
+}
+
+.header {
+  vertical-align: middle;
+}
+
+nav a {
+  display: inline-block;
+  margin: 5px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.link {
+  border-bottom: 1px solid black;
+}
+
+.link:hover {
+  border-bottom: 3px solid #002db3;
+  font-weight: bold;
+}
+
+/*
+  Search Box Placeholder Text Color Overwrite
+ */
+
+ ::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
+/*
+  Generate New Tweets Button
+ */
+button {
+  display: inline-block;
+  margin: 10px 0 10px 44%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  border-style: outset;
+  background-image: linear-gradient(#f2f2f2, #b3b3b3);
+  padding: 25px;
+}
+
+/*
+  Custom Effects (imitation of browsers') for new tweets button
+ */
+.button-border {
+  border: 1px solid black;
+}
+
+.button-click {
+  background-image: linear-gradient(#b3b3b3, #f2f2f2);
+}
+
+/*
+  Tweet Stylization
+ */
+.tweet {
+  display: block;
+  border: 1px solid gray;
+  padding: 5px;
+  width: 33%;
+  height: 25px;
+  margin-left: 33%;
+  font: 12px/1.15px arial;
+  text-align: left;
+}
+
+.tweet:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.tweet-user {
+  display: inline;
+  font-weight: bold;
+}
+
+.tweet-meta {
+  color: gray;
+}

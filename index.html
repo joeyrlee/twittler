@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link href="style.css" rel="stylesheet">
+
+    <link rel="icon" href="Twitter-Logo.png">
+    <title>Twittler</title>
   </head>
   <body>
-    <script>
+    <!-- Nav -->
+    <nav>
+      <a href="#" class="header link">Home</a>
+      <a href="#" class="header link">Messages</a>
+      <a href="#" class="header"><img src="Twitter-Logo.png" alt="Twitter Bird Logo"></a>
+      <input type="text" name="username" placeholder="Search Twittler" class="header search" />
+      <input type="submit" name="submit" value="Search" class="header" />
+    </nav>
 
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+    <main>
+      <button type="button">Generate New Tweets!</button>
+      <!-- Tweets are generated as articles appended to Section -->
+      <section>
+        <script>
+          $(document).ready(function(){
+          var $section = $('section');
+          $section.html('');
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            //append the tweets to the `main` element as article 
+    		//elements to provide greater semantic value than div tags
+            var $tweet = $('<article></article>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $tweet.appendTo($section);
+            index -= 1;
+          }
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+          //`Generate New Tweets` search box effects (created manually because the normal effects won't work for a large, custom box)
+          $('button').on('mouseenter', function() {
+            $(this).addClass('button-border');
+          });
+          $('button').on('mouseleave', function() {
+            $(this).removeClass('button-border');
+          });
+          $('button').on('mousedown', function() {
+            $(this).addClass('button-click');
+          });
+          $('button').on('click', function() {
+            $(this).removeClass('button-click');
+          });
+        });
+      </script>
+      </section>
+    </main>
 
-      });
-
-    </script>
   </body>
 </html>
