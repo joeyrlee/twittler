@@ -1,3 +1,8 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
 /*
   Navigation
  */
@@ -99,35 +104,46 @@ button {
   background-image: linear-gradient(#b3b3b3, #f2f2f2);
 }
 
-
-.article {
-  border: ;
-}
-
 /*
   Tweet Stylization
  */
+.tweet:nth-child(odd){
+  margin-left: 22%;
+}
+
+.tweet:nth-child(even){
+  margin-left: 32%;
+}
+
 .tweet {
-  display: block;
+  display: inline-block;
   border: 1px solid #bfbfbf;
+  border-radius: 5px 5px 5px 5px;
   background: white;
-  padding: 5px;
-  width: 33%;
-  height: 35px;
-  margin-left: 33%;
-  font: 12px/1.15px arial;
+  padding: 15px 5px 5px 5px;
+  width: 46%;
+  height: 45px;
+  font: 14px/1.15px arial;
   text-align: left;
 }
 
-.tweet:first-child {
-  border-radius: 5px 5px 0 0;
+.tweet-user, .tweet-meta {
+  display: inline-block;
 }
 
 .tweet-user {
-  display: inline;
   font-weight: bold;
 }
 
-.tweet-meta {
+.tweet-user:hover {
+  color: #0000EE;
+  text-decoration: underline;
+}
+
+.tweet-meta, span a {
   color: gray;
+}
+
+.tweet-message {
+  margin-top: 15px;
 }

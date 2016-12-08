@@ -25,34 +25,47 @@
       <section>
         <script>
           $(document).ready(function(){
-          var $section = $('section');
+          var $section = $("section");
           $section.html('');
           var index = streams.home.length - 1;
+          
           while(index >= 0){
             var tweet = streams.home[index];
             //append the tweets to the `main` element as article 
     		//elements to provide greater semantic value than divs
-            var $tweet = $('<article class="tweet"></article>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $tweet.appendTo($section);
-            index -= 1;
+            $section.append(`<article class='tweet'><a href='#' class='tweet-user user'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+            index--;
           }
 
-          //`Generate New Tweets` search box effects (created manually because the normal effects won't work for a large, custom box)
-          $('button').on('mouseenter', function() {
-            $(this).addClass('button-border');
+          //`Generate New Tweets` search box style effects (created manually because the normal effects won't work for a large, custom box)
+          $("button").on("mouseenter", function() {
+            $(this).addClass("button-border");
           });
-          $('button').on('mouseleave', function() {
-            $(this).removeClass('button-border');
+          $("button").on("mouseleave", function() {
+            $(this).removeClass("button-border");
           });
-          $('button').on('mousedown', function() {
-            $(this).addClass('button-click');
+          $("button").on("mousedown", function() {
+            $(this).addClass("button-click");
           });
-          $('button').on('click', function() {
-            $(this).removeClass('button-click');
+          $("button").on("click", function() {
+            $(this).removeClass("button-click");
           });
+
+          //Index set to the index of the first tweet displayed via the while loop + 1
+   		  index = 10;
+   		  //Clicking the custom button simply prepends the next tweat in the queue to section as a new article element
+          $("button").on("click", function(){
+          	index++;
+          	tweet = streams.home[index];
+          	$section.prepend(`<article class='tweet'><a href='#' class='tweet-user user'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          });
+
         });
-      </script>
+        </script>
       </section>
     </main>
 
