@@ -25,19 +25,25 @@
       <section>
         <script>
           $(document).ready(function(){
+          //Prevent clicking faux anchors from moving you around the page using event delegation
+          $(document).on("click", "a", function(event){
+          	event.preventDefault();
+          });
+
           var $section = $("section");
           $section.html('');
           var index = streams.home.length - 1;
           
           while(index >= 0){
             var tweet = streams.home[index];
-            //append the tweets to the `main` element as article 
+            //append the tweets to the `main` element as article
     		//elements to provide greater semantic value than divs
-            $section.append(`<article class='tweet'><a href='#' class='tweet-user user'>${tweet.user
-            				}</a> <span class='tweet-meta'><a href='#' class='user'>@${tweet.user
+            $section.append(`<article class='tweet'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user` + tweet.user + `'>@${tweet.user
             				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
             index--;
           }
+
 
           //`Generate New Tweets` search box style effects (created manually because the normal effects won't work for a large, custom box)
           $("button").on("mouseenter", function() {
@@ -53,15 +59,72 @@
             $(this).removeClass("button-click");
           });
 
+
           //Index set to the index of the first tweet displayed via the while loop + 1
-   		  index = 10;
+   		  index = 11;
+   		  var timelineIsIsolated = false;
    		  //Clicking the custom button simply prepends the next tweat in the queue to section as a new article element
           $("button").on("click", function(){
-          	index++;
+          	//Purge the timeline of tweets if and when it's isolated to one user's feed to prevent duplicates
+          	if(timelineIsIsolated){
+          	  $(".duplicate").remove();
+          	}
+          	//Clicking the button also resets the twitter feed from isolating one user's timeline
+          	$(".tweet").slideDown();
           	tweet = streams.home[index];
-          	$section.prepend(`<article class='tweet'><a href='#' class='tweet-user user'>${tweet.user
-            				}</a> <span class='tweet-meta'><a href='#' class='user'>@${tweet.user
+          	$section.prepend(`<article class='tweet'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user` + tweet.user + `'>@${tweet.user
             				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          	index++;
+          });
+
+
+          //Click event handlers for displaying only a certain user's timeline
+          $("section").on("click", ".shawndrost", function(){
+          	//slideUp and hide all tweets in preparation for timeline isolation
+          	$(".tweet").slideUp();
+          	//populate the feed with only the selected user's tweets
+          	for(var i = 0; i < streams.users.shawndrost.length; i++){
+          	  timelineIsIsolated = true;
+          	  tweet = streams.users.shawndrost[i];
+          	  $section.prepend(`<article class='tweet duplicate'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user ` + tweet.user + `'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          	}
+          	index++;
+          });
+          $("section").on("click", ".sharksforcheap", function(){
+          	$(".tweet").slideUp();
+          	for(var i = 0; i < streams.users.sharksforcheap.length; i++){
+          	  timelineIsIsolated = true;
+          	  tweet = streams.users.sharksforcheap[i];
+          	  $section.prepend(`<article class='tweet duplicate'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user ` + tweet.user + `'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          	}
+          	index++;
+          });
+          $("section").on("click", ".mracus", function(){
+          	$(".tweet").slideUp();
+          	for(var i = 0; i < streams.users.mracus.length; i++){
+          	  timelineIsIsolated = true;
+          	  tweet = streams.users.mracus[i];
+          	  $section.prepend(`<article class='tweet duplicate'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user ` + tweet.user + `'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          	}
+          	index++;
+          });
+          $("section").on("click", ".douglascalhoun", function(){
+          	$(".tweet").slideUp();
+          	for(var i = 0; i < streams.users.douglascalhoun.length; i++){
+          	  timelineIsIsolated = true;
+          	  tweet = streams.users.douglascalhoun[i];
+          	  $section.prepend(`<article class='tweet duplicate'><a href='#' class='tweet-user user ` + tweet.user + `'>${tweet.user
+            				}</a> <span class='tweet-meta'><a href='#' class='user ` + tweet.user + `'>@${tweet.user
+            				}</a> &bull; ${tweet.created_at}</span><p class="tweet-message">${tweet.message}</p></article>`);
+          	}
+          	index++;
           });
 
         });

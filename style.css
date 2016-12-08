@@ -147,3 +147,7 @@ button {
 .tweet-message {
   margin-top: 15px;
 }
+
+.tweet {
+  display: hide;
+}
